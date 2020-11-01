@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "149025046802",
+    "firebase_url": "https://faiba-7a64b.firebaseio.com",
+    "project_id": "faiba-7a64b",
+    "storage_bucket": "faiba-7a64b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149025046802:android:82b36caeca76fc975973cb",
+        "android_client_info": {
+          "package_name": "com.joshheavy.faiba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149025046802-svq3utag1lq2dvh4kf9jrrpjsla1lv5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ_hwkWW4ThpeE-b3of4IgPLxbZcUZp5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149025046802-svq3utag1lq2dvh4kf9jrrpjsla1lv5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
