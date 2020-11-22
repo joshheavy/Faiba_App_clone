@@ -9,8 +9,80 @@ class CustomBody extends StatelessWidget {
       child: Column(
         children: [
           CarouselHome(),
-          CustomCard(text: 'Faiba Mobile',),
-          CustomCard(text: 'Faiba Fixed',),
+          Card(
+            elevation: 20,
+            child: Container(
+              height: 200,
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Faiba Mobile"),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Material(
+                                elevation: 5,
+                                borderRadius: BorderRadius.circular(50),
+                                child: IconButton(
+                                    icon: Icon(Icons.call, color: Colors.green),
+                                    onPressed: () {})),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text("Buy airtime"),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Material(
+                                elevation: 5,
+                                borderRadius: BorderRadius.circular(50),
+                                child: IconButton(
+                                    icon: Icon(Icons.call, color: Colors.green),
+                                    onPressed: () {})),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text("Buy airtime"),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Material(
+                                elevation: 5,
+                                borderRadius: BorderRadius.circular(50),
+                                child: IconButton(
+                                    icon: Icon(Icons.call, color: Colors.green),
+                                    onPressed: () {})),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text("Buy airtime"),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          CustomCard(
+            text: 'Faiba Fixed',
+          ),
         ],
       ),
     );

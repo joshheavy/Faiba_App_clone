@@ -1,3 +1,5 @@
+import 'package:faiba/pages/home.dart';
+import 'package:faiba/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -8,6 +10,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,65 +33,99 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   color: Colors.black,
                 ),
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               Container(
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
                 child: FormBuilderTextField(
-                  name: 'firstname',
+                  attribute: 'firstname',
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
                   decoration: InputDecoration(
-                    labelText:
-                    'First name',
+                    labelText: 'First name',
                   ),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context)
-                  ]),
-                  keyboardType: TextInputType.number,
-                ),),
+                  keyboardType: TextInputType.name,
+                ),
+              ),
+              Container(
+                  margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                  child: FormBuilderTextField(
+                    attribute: 'lastname',
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
+                    decoration: InputDecoration(
+                      labelText: 'Last name',
+                    ),
+                    keyboardType: TextInputType.name,
+                  )),
               Container(
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: TextFormField(
+                child: FormBuilderTextField(
+                  attribute: 'email',
+                  validators: [
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.email(),
+                  ],
                   decoration: InputDecoration(
-                    hintText: 'Last name'
+                    labelText: 'Email',
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 15.0, right: 15.0),
+                child: FormBuilderTextField(
+                  attribute: 'password',
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
+                  decoration: InputDecoration(
+                    labelText: 'Password',
                   ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: TextFormField(
+                child: FormBuilderTextField(
+                  attribute: 'confirm_password',
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
                   decoration: InputDecoration(
-                    hintText: 'Email'
+                    labelText: 'Confirm Password',
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Password'
-                  ),
-                ),
+              SizedBox(
+                height: 10.0,
               ),
-              Container(
-                margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Confirm Password'
-                  ),
-                ),
-              ),
-              SizedBox(height: 10.0,),
               Container(
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
                 width: 400.0,
                 child: FlatButton(
                     color: Colors.green,
-                    onPressed: (){},
-                    child: Text('Register', style: TextStyle(
-                      color: Colors.white
-                    ),)
-                  ),
+                    onPressed: () async {
+                      if (_formKey.currentState.saveAndValidate()) {
+                        await AuthService()
+                            .registerUser(
+                                email: _formKey.currentState.value['email'],
+                                password: _formKey.currentState.value['email'],
+                                details: _formKey.currentState.value)
+                            .then((value) => {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Home()))
+                                });
+                      }
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(color: Colors.white),
+                    )),
               ),
             ],
           ),

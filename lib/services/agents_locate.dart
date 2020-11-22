@@ -1,6 +1,5 @@
 import 'package:faiba/models/agents.dart';
 
-
 var agents = Agent.agents;
 
 class AgentManager {

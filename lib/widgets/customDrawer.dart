@@ -4,68 +4,57 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: ListView(
+        child: Column(
       children: [
-        DrawerHeader(
-          decoration: BoxDecoration(
-            color: Colors.grey[200]
+        ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 30.0,
+            child: Icon(Icons.person_outline_rounded),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 30.0,
-                child: Icon(Icons.person),
-              ),
-              SizedBox(width: 40),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Joshua',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Manage profile',
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  )
-                ],
-              )
-            ],
+          title: Text(
+            'Joshua',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            'Manage profile',
+            style: TextStyle(color: Theme.of(context).primaryColor),
           ),
         ),
         _Tiles(
-          icon: Icons.home, 
-          text: 'Home', 
-          onTap: ()=> Navigator.pop(context),
+          icon: Icons.home,
+          text: 'Home',
+          onTap: () => Navigator.pop(context),
         ),
         _Tiles(
-          icon: Icons.settings, 
+          icon: Icons.settings,
           text: 'Settings',
-          onTap: ()=> Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
         ),
         _Tiles(
-          icon: Icons.error_outline, 
+          icon: Icons.error_outline,
           text: 'Support',
-          onTap: ()=> Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
         ),
         _Tiles(
-          icon: Icons.shopping_cart, 
+          icon: Icons.shopping_cart,
           text: 'Faiba Shop',
-          onTap: ()=> Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
         ),
         _Tiles(
-          icon: Icons.book, 
+          icon: Icons.book,
           text: 'FAQ',
-          onTap: ()=> Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
         ),
         _Tiles(
-          icon: Icons.error, 
+          icon: Icons.error,
           text: 'About',
-          onTap: ()=> Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
+        ),
+        Expanded(child: Container()),
+        ListTile(
+          leading: Icon(Icons.logout),
+          title: Text("Logout"),
         )
       ],
     ));
@@ -77,7 +66,8 @@ class _Tiles extends StatelessWidget {
   final String text;
   final Function onTap;
 
-  const _Tiles({ Key key, @required this.icon, @required this.text, @required this.onTap})
+  const _Tiles(
+      {Key key, @required this.icon, @required this.text, @required this.onTap})
       : super(key: key);
 
   @override

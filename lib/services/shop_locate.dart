@@ -1,7 +1,6 @@
 // ignore: non_constant_identifier_names
 import 'package:faiba/models/shops.dart';
 
-
 var shops = Shop.shopList;
 
 class ShopManager {

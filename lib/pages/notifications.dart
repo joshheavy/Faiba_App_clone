@@ -11,14 +11,17 @@ class Notifications extends StatelessWidget {
         children: [
           BoxCard(
             title: 'Update Your contact information',
-            subtitle: 'Dear customer to help us serve you better, kindly update your current contant details using the link below;',
+            subtitle:
+                'Dear customer to help us serve you better, kindly update your current contant details using the link below;',
           ),
           SizedBox(
             height: 10.0,
           ),
           BoxCard(
-            title: 'Airtime and Fixed Services Payments now available on Pesalink',
-            subtitle: 'We are delighted to inform you that you can pay your Faiba internet connection via M-pesa through the Faiba App in 4 easy steps',
+            title:
+                'Airtime and Fixed Services Payments now available on Pesalink',
+            subtitle:
+                'We are delighted to inform you that you can pay your Faiba internet connection via M-pesa through the Faiba App in 4 easy steps',
           ),
         ],
       ),
@@ -30,7 +33,8 @@ class BoxCard extends StatelessWidget {
   final String title;
   final String subtitle;
   const BoxCard({
-    Key key, @required this.title, 
+    Key key,
+    @required this.title,
     @required this.subtitle,
   }) : super(key: key);
 
@@ -62,7 +66,10 @@ class BoxCard extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(subtitle, style: TextStyle(color: Colors.black87),),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: Colors.black87),
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -83,7 +90,9 @@ class BoxCard extends StatelessWidget {
                         BoxShadow(color: Colors.white, offset: Offset(0, 1))
                       ]),
                 ),
-                SizedBox(height: 15,)
+                SizedBox(
+                  height: 15,
+                )
               ],
             ),
           ),
@@ -92,5 +101,3 @@ class BoxCard extends StatelessWidget {
     );
   }
 }
-
-

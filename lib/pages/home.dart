@@ -58,8 +58,7 @@ class _HomeState extends State<Home> {
                 icon: Icon(Icons.home_outlined), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.location_on_outlined, color: Colors.white),
-                label: 'Shop locator'
-            )
+                label: 'Shop locator')
           ],
           elevation: 0.0,
           currentIndex: selectedIndex,

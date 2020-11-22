@@ -8,7 +8,6 @@ class Authentication extends StatefulWidget {
 }
 
 class _AuthenticationState extends State<Authentication> {
-
   int selectedIndex = 0;
 
   void onTappedItem(int index) {
@@ -29,12 +28,9 @@ class _AuthenticationState extends State<Authentication> {
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
           items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.login), label: 'login'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.login), label: 'login'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_add_alt),
-                label: 'Register'
-            )
+                icon: Icon(Icons.person_add_alt), label: 'Register')
           ],
           elevation: 0.0,
           currentIndex: selectedIndex,

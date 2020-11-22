@@ -39,6 +39,5 @@ class Agent {
     Agent(name: 'David Otieno Lango', place: 'Jkuat Main Center'),
     Agent(name: 'John Ndiragu', place: 'Ruiru Stage'),
     Agent(name: 'Mohamud Dahir Abdi', place: 'Jamia Mall'),
-    
   ];
 }

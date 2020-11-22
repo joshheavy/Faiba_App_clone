@@ -39,9 +39,8 @@ class _ShopPageState extends State<ShopPage> {
 class ShopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     ShopManager manager = ShopManager();
-    
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -67,8 +66,16 @@ class ShopWidget extends StatelessWidget {
                         itemCount: shops.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
-                            leading: shops[index].icon != null ? Icon(shops[index].icon, color: Colors.green,) : null,
-                            title: Text(shops[index].title, style: TextStyle(color: Colors.black),),
+                            leading: shops[index].icon != null
+                                ? Icon(
+                                    shops[index].icon,
+                                    color: Colors.green,
+                                  )
+                                : null,
+                            title: Text(
+                              shops[index].title,
+                              style: TextStyle(color: Colors.black),
+                            ),
                             subtitle: Text(shops[index].subtitle),
                           );
                         })
@@ -94,7 +101,7 @@ class AgentWidget extends StatelessWidget {
         children: [
           TextFormField(
             decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search), hintText: 'Search'),
+                prefixIcon: Icon(Icons.search), hintText: 'Search'),
           ),
           Container(
             height: MediaQuery.of(context).size.height,
@@ -107,9 +114,8 @@ class AgentWidget extends StatelessWidget {
                         itemCount: agents.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
-                            title: Text(agents[index].name, style: TextStyle(
-                              color: Colors.black
-                            )),
+                            title: Text(agents[index].name,
+                                style: TextStyle(color: Colors.black)),
                             subtitle: Text(agents[index].place),
                           );
                         })
@@ -120,7 +126,7 @@ class AgentWidget extends StatelessWidget {
             ),
           )
         ],
-      ), 
+      ),
     );
   }
 }
