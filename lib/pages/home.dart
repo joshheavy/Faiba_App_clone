@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
         MaterialPageRoute(builder: (BuildContext context) => Notifications()));
   }
 
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   void onTappedItem(int index) {
     setState(() {
