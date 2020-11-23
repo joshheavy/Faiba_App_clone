@@ -79,6 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
                 child: FormBuilderTextField(
                   attribute: 'password',
+                  obscureText: true,
                   validators: [
                     FormBuilderValidators.required(),
                   ],
@@ -91,6 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
                 child: FormBuilderTextField(
                   attribute: 'confirm_password',
+                  obscureText: true,
                   validators: [
                     FormBuilderValidators.required(),
                   ],
@@ -112,7 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         await AuthService()
                             .registerUser(
                                 email: _formKey.currentState.value['email'],
-                                password: _formKey.currentState.value['email'],
+                                password: _formKey.currentState.value['password'],
                                 details: _formKey.currentState.value)
                             .then((value) => {
                                   Navigator.pushReplacement(

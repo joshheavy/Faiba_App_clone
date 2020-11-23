@@ -1,3 +1,4 @@
+import 'package:faiba/pages/callus.dart';
 import 'package:faiba/pages/customBody.dart';
 import 'package:faiba/pages/notifications.dart';
 import 'package:faiba/pages/shop_locator.dart';
@@ -24,6 +25,7 @@ class _HomeState extends State<Home> {
   }
 
   final List<Widget> _widgetOptions = [
+    CallUsPage(),
     CustomBody(),
     ShopPage(),
   ];
@@ -42,7 +44,7 @@ class _HomeState extends State<Home> {
           elevation: 0.0,
           actions: [
             IconButton(
-                icon: Icon(Icons.add_alert),
+                icon: Icon(Icons.notifications_none),
                 color: Colors.white,
                 onPressed: () {
                   _nextPage();
@@ -54,6 +56,8 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
           items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.phone_in_talk_outlined), label: 'Call Us'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined), label: 'Home'),
             BottomNavigationBarItem(

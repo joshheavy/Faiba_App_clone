@@ -1,5 +1,9 @@
 import 'package:faiba/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+
+import '../services/auth.dart';
+import 'home.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -7,8 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  AuthService _auth = AuthService();
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   String email = '';
   String password = '';
@@ -18,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Form(
+        child: FormBuilder(
           key: _formKey,
           child: Column(
             children: [
@@ -44,29 +47,29 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Container(
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: TextFormField(
-                  validator: (value) => value.isEmpty ? "Enter an Email" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      email = value;
-                    });
-                  },
-                  decoration: InputDecoration(hintText: 'Email'),
+                child: FormBuilderTextField(
+                  attribute: 'email',
+                  validators: [
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.email(),
+                  ],
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                  ),
+                  keyboardType: TextInputType.emailAddress,
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: TextFormField(
-                  validator: (value) => value.length < 6
-                      ? 'Enter a password with 6 characters'
-                      : null,
-                  onChanged: (value) {
-                    setState(() {
-                      password = value;
-                    });
-                  },
+                child: FormBuilderTextField(
+                  attribute: 'password',
                   obscureText: true,
-                  decoration: InputDecoration(hintText: 'Password'),
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                  ),
                 ),
               ),
               SizedBox(
@@ -78,13 +81,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: FlatButton(
                     color: Colors.green,
                     onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        dynamic result = await _auth.signIn(email, password);
-                        if (result == null) {
-                          setState(() {
-                            error = 'Please supply a valid credential';
-                          });
-                        }
+                      if (_formKey.currentState.saveAndValidate()) {
+                        AuthService().signIn(
+                          email: _formKey.currentState.value['email'],
+                          password: _formKey.currentState.value['password'],
+                        ).then((value) => {
+                          Navigator.pushReplacement(context, MaterialPageRoute(
+                            builder: (context) => Home()
+                          ))
+                        });
                       }
                     },
                     child: Text(

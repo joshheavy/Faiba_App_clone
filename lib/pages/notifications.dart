@@ -61,21 +61,21 @@ class BoxCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
                 ),
                 SizedBox(
                   height: 10.0,
                 ),
                 Text(
                   subtitle,
-                  style: TextStyle(color: Colors.black87),
+                  style: TextStyle(color: Colors.black87, fontSize: 21.0,),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 Container(
                   height: 30.0,
-                  width: 400,
+                  width: MediaQuery.of(context).size.width,
                   child: FlatButton(
                       onPressed: () {},
                       child: Center(

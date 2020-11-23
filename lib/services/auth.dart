@@ -11,11 +11,12 @@ class AuthService {
   }
 
   // register with email and password
-  Future<User> registerUser(
+  Future registerUser(
       {String email, String password, Map<String, dynamic> details}) async {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
+          // ignore: missing_return
           .then((value) {
         print("User registered successfully");
         _firebaseFirestore.collection("users").add(details);
@@ -34,7 +35,7 @@ class AuthService {
   }
 
   // sign in with email and password
-  Future signIn(email, password) async {
+  Future signIn({String email, String password}) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
