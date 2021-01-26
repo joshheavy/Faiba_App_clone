@@ -1,8 +1,12 @@
 import 'package:faiba/models/agents.dart';
 import 'package:faiba/models/shops.dart';
-import 'package:faiba/services/agents_locate.dart';
-import 'package:faiba/services/shop_locate.dart';
+import 'package:faiba/providers/shop_provider.dart';
+import 'package:faiba/providers/agent_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+// import 'package:faiba/services/shop_locate.dart';
+// import 'package:faiba/services/agents_locate.dart';
 
 class ShopPage extends StatefulWidget {
   @override
@@ -39,7 +43,7 @@ class _ShopPageState extends State<ShopPage> {
 class ShopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ShopManager manager = ShopManager();
+    final bloc = Provider.of<ShopProvider>(context).bloc;
 
     return SingleChildScrollView(
       child: Column(
@@ -57,8 +61,8 @@ class ShopWidget extends StatelessWidget {
           ),
           Container(
             height: MediaQuery.of(context).size.height,
-            child: StreamBuilder(
-              stream: manager.shopList,
+            child: StreamBuilder<List<Shop>>(
+              stream: bloc.shops,
               builder: (context, snapshot) {
                 List<Shop> shops = snapshot.data;
                 return snapshot.hasData
@@ -94,7 +98,8 @@ class ShopWidget extends StatelessWidget {
 class AgentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AgentManager manager = AgentManager();
+
+    final bloc = Provider.of<AgentProvider>(context).bloc;
 
     return SingleChildScrollView(
       child: Column(
@@ -105,8 +110,8 @@ class AgentWidget extends StatelessWidget {
           ),
           Container(
             height: MediaQuery.of(context).size.height,
-            child: StreamBuilder(
-              stream: manager.agentList,
+            child: StreamBuilder<List<Agent>>(
+              stream: bloc.agents,
               builder: (context, snapshot) {
                 List<Agent> agents = snapshot.data;
                 return snapshot.hasData
@@ -119,9 +124,14 @@ class AgentWidget extends StatelessWidget {
                             subtitle: Text(agents[index].place),
                           );
                         })
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      );
+                    : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                      ],
+                    );
               },
             ),
           )
