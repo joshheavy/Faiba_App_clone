@@ -1,6 +1,7 @@
 import 'package:faiba/pages/authentication.dart';
 import 'package:faiba/pages/home.dart';
 import 'package:faiba/providers/agent_provider.dart';
+import 'package:faiba/providers/bundles_provider.dart';
 import 'package:faiba/providers/shop_provider.dart';
 import 'package:faiba/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,9 +23,11 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ShopProvider>(create: (_) => ShopProvider()),
         ChangeNotifierProvider<AgentProvider>(create: (_) => AgentProvider()),
+        ChangeNotifierProvider<BundleProvider>(create: (_) => BundleProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'Faiba',
         theme: ThemeData(primarySwatch: Colors.green),
         home: Wrapper(),
       ),
